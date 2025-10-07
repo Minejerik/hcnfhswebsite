@@ -1,4 +1,4 @@
-<div class="navbar bg-base-100 shadow-sm fixed top-0">
+<div class="navbar bg-base-100 shadow-sm fixed top-0 mb-0">
 	<div class="flex-1">
 		<a class="btn text-xl btn-ghost" href="/">Hackclub @ NFHS</a>
 	</div>
@@ -9,6 +9,9 @@
 			</li>
 			<li>
 				<a href="/join">Join</a>
+			</li>
+			<li>
+				<a href="/blog">Blog</a>
 			</li>
 			<!-- <li>
           <details>

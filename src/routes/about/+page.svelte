@@ -3,6 +3,10 @@
 	import '../../app.css';
 </script>
 
+<svelte:head>
+  <title>HC@NFHS | About</title>
+</svelte:head>
+
 <HCnav></HCnav>
 
 <div class="hero bg-base-200 min-h-screen">
