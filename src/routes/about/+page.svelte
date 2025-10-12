@@ -43,10 +43,10 @@
 		<div class="card mt-10 card-side min-h-75 min-w-[50%] bg-base-100 shadow-xl">
 			<figure class="hover-gallery max-w-60">
 				<!-- TODO: replace photos w my own -->
-				<img src={front} />
-				<img src={left} />
-				<img src={front} />
-				<img src={right} />
+				<img src={front} alt="the hc@nfhs leader"/>
+				<img src={left}  alt="the hc@nfhs leader"/>
+				<img src={front} alt="the hc@nfhs leader"/>
+				<img src={right} alt="the hc@nfhs leader"/>
 			</figure>
 			<div class="card-body">
 				<div class="card-title flex justify-center">
