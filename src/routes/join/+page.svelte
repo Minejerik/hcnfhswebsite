@@ -29,10 +29,10 @@
 <HCnav></HCnav>
 
 <div class="hero min-h-screen bg-base-200">
-	<div class="hero-content w-296 text-center">
+	<div class="hero-content text-center">
 		<div class="card w-200 w-max bg-base-100 shadow-2xl">
 			<div class="card-body w-96">
-				<h1 class="card-title">Join Hackclub @ NFHS</h1>
+				<h1 class="text-2xl font-bold">Join Hackclub @ NFHS</h1>
 				<form on:submit={submit}>
 					<fieldset class="fieldset">
 						<legend class="fieldset-legend">What should we call you?</legend>
