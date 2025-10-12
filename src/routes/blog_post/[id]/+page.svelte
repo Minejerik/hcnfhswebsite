@@ -44,13 +44,14 @@
 			<h2>Written by: {post.author}</h2>
 			<h2>{post.took_place}</h2>
 			<div class="pt-5">
-				<div class="carousel">
+				<div class="carousel max-h-[25%] h-[25%]">
+					<!-- TODO: Use a better solution for images -->
 					{#each post.images as image}
-						<div id="item1" class="carousel-item max-h-[50%] w-full">
+						<div id="item1" class="carousel-item max-h-[25%] h-[25%] w-full">
 							<img
-								src={pb.files.getURL(post, image)}
+								src={pb.files.getURL(post, image, { thumb: '600x0' })}
 								alt={`From ${post.title}`}
-								class="max-h-[75%] rounded-sm"
+								class="rounded-sm"
 							/>
 						</div>
 					{/each}
