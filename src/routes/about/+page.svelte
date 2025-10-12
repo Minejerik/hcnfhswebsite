@@ -1,5 +1,6 @@
 <script>
 	import HCnav from '$lib/HCnav.svelte';
+	import logo from '$lib/assets/logos/NFHS Hack club logo.png';
 	import '../../app.css';
 </script>
 
@@ -13,7 +14,7 @@
 	<div class="max-w-[50%]">
 		<div class="card card-side max-h-75 min-w-[50%] bg-base-100 shadow-2xl">
 			<figure class="max-w-60">
-				<img src="src/lib/assets/logos/NFHS Hack club logo.png" alt="HC @ NFHS Logo" />
+				<img src={logo} alt="HC @ NFHS Logo" />
 			</figure>
 			<div class="card-body">
 				<div class="card-title flex justify-center">
