@@ -21,12 +21,11 @@
 	<title>HC@NFHS | Blog</title>
 </svelte:head>
 
-<div class="min-h-screen bg-base-200 pt-25 pr-15 pl-15">
-	<div class="flex flex-wrap gap-4">
-		<div class="bg-base-100">
+<div class="min-h-screen bg-base-200 pt-25 pr-[2%] pl-[2%]">
+	<div class="flex flex-wrap gap-4 gap-y-75">
 			{#each blogList as post}
 				<div
-					class="card h-50 w-96 min-w-50 bg-base-100 transition duration-300 ease-in-out outline-solid hover:scale-101"
+					class="card h-50 w-96 min-w-50 bg-base-100 flex-none transition duration-300 ease-in-out outline-solid hover:scale-101"
 				>
 					<a href={`blog_post/${post.id}`} class="h-50 rounded-xl bg-base-100">
 						<figure>
@@ -46,6 +45,5 @@
 					</a>
 				</div>
 			{/each}
-		</div>
 	</div>
 </div>
