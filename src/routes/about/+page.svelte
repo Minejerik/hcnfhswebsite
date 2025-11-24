@@ -35,7 +35,7 @@
 				</div>
 				<div>
 					{#each userList as user}
-						<div class="hover-3d">
+						<a class="hover-3d" href={`/member/${user.id}`}>
 							<div class="card max-w-45 bg-base-300 shadow-lg">
 								<figure>
 									<img
@@ -56,7 +56,7 @@
 							<div></div>
 							<div></div>
 							<div></div>
-						</div>
+						</a>
 					{/each}
 				</div>
 			</div>
