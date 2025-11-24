@@ -8,10 +8,12 @@
 
 	onMount(async () => {
 		const blogListPB = await pb.collection('posts').getFullList({
-			sort: '-took_place'
+			sort: '-took_place',
+			expand: "author"
 		});
 
 		blogList = blogListPB;
+		console.log(blogList)
 	});
 </script>
 
@@ -36,7 +38,7 @@
 							<p>{@html post.description}</p>
 							<hr />
 							<div class="card-actions">
-								<span>Written by: {post.author}</span>
+								<span>Written by: {post.expand.author.name}</span>
 								<div class="text-right">
 									<span>{post.took_place}</span>
 								</div>

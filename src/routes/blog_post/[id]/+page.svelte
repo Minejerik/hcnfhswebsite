@@ -16,7 +16,7 @@
 	onMount(async () => {
 		try {
 			// @ts-ignore
-			post = await pb.collection('posts').getOne(postId);
+			post = await pb.collection('posts').getOne(postId, {expand:"author"});
 			finished = true;
 		} catch (error) {
 			fail = true;
@@ -41,7 +41,9 @@
 	{#if finished && !fail}
 		<div class="max-w-[50%]">
 			<h1 class="text-3xl">{post.title}</h1>
-			<h2>Written by: {post.author}</h2>
+			<a href={`/member/${post.author}`}>
+				<h2>Written by: {post.expand.author.name}</h2>
+			</a>
 			<h2>{post.took_place}</h2>
 			<div class="pt-5">
 				<div class="carousel max-h-[25%] h-[25%]">
