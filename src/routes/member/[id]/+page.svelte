@@ -43,16 +43,41 @@
 			<div class="card-body">
 				<div class="flex">
 					<div class="avatar">
-						<div class="min-w-32 max-w-64 rounded">
+						<div class="max-w-64 min-w-32 rounded">
 							<img
-							src={pb.files.getURL(user, user.pfp, { thumb: '256x0' })}
-							alt={`${user.name} Profile Picture`}
+								src={pb.files.getURL(user, user.pfp, { thumb: '256x0' })}
+								alt={`${user.name} Profile Picture`}
 							/>
 						</div>
 					</div>
-					<div class="pl-10 place-self-center">
+					<div class="place-self-center pl-10">
 						<h1 class="font-title text-8xl">{user.name}</h1>
-						
+						<div class="divider"></div>
+						<div class="badge badge-info">
+							<svg class="size-[1em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+								><g fill="currentColor" stroke-linejoin="miter" stroke-linecap="butt"
+									><circle
+										cx="12"
+										cy="12"
+										r="10"
+										fill="none"
+										stroke="currentColor"
+										stroke-linecap="square"
+										stroke-miterlimit="10"
+										stroke-width="2"
+									></circle><path
+										d="m12,17v-5.5c0-.276-.224-.5-.5-.5h-1.5"
+										fill="none"
+										stroke="currentColor"
+										stroke-linecap="square"
+										stroke-miterlimit="10"
+										stroke-width="2"
+									></path><circle cx="12" cy="7.25" r="1.25" fill="currentColor" stroke-width="2"
+									></circle></g
+								></svg
+							>
+							Github
+						</div>
 					</div>
 				</div>
 			</div>
