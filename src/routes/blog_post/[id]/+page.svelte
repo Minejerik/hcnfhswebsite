@@ -16,7 +16,7 @@
 	onMount(async () => {
 		try {
 			// @ts-ignore
-			post = await pb.collection('posts').getOne(postId, {expand:"author"});
+			post = await pb.collection('posts').getOne(postId, { expand: 'author' });
 			finished = true;
 		} catch (error) {
 			fail = true;
@@ -40,16 +40,28 @@
 <div class="flex min-h-screen justify-center bg-base-200 pt-20">
 	{#if finished && !fail}
 		<div class="max-w-[50%]">
-			<h1 class="text-3xl">{post.title}</h1>
-			<a href={`/member/${post.author}`}>
-				<h2>Written by: {post.expand.author.name}</h2>
-			</a>
-			<h2>{post.took_place}</h2>
+			<h1 class="font-title text-5xl">{post.title}</h1>
+			<div class="pt-2 pb-2 flex">
+				<a href={`/member/${post.author}`}>
+					<h1 class="text-xl">
+						<div class="avatar">
+							<div class="w-8 rounded">
+								<img
+									src={pb.files.getURL(post.expand.author, post.expand.author.pfp, { thumb: '32x32' })}
+									alt="Tailwind-CSS-Avatar-component"
+								/>
+							</div>
+						</div>
+						{post.expand.author.name}
+					</h1>
+				</a>
+				<h2 class="text-xl">&nbsp; {post.took_place}</h2>
+			</div>
 			<div class="pt-5">
-				<div class="carousel max-h-[25%] h-[25%]">
+				<div class="carousel h-[25%] max-h-[25%]">
 					<!-- TODO: Use a better solution for images -->
 					{#each post.images as image}
-						<div id="item1" class="carousel-item max-h-[25%] h-[25%] w-full">
+						<div id="item1" class="carousel-item h-[25%] max-h-[25%] w-full">
 							<img
 								src={pb.files.getURL(post, image, { thumb: '600x0' })}
 								alt={`From ${post.title}`}
@@ -58,7 +70,8 @@
 						</div>
 					{/each}
 				</div>
-				<div>{@html post.body_text}</div>
+				<div class="divider"></div>
+				<div class="prose">{@html post.body_text}</div>
 			</div>
 		</div>
 	{:else if finished && fail}
