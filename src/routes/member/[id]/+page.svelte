@@ -4,6 +4,8 @@
 	import { onMount } from 'svelte';
 	import '../../../app.css';
 	import { pb } from '$lib/pocketbase';
+	import { Github, Globe, Twitter } from '@lucide/svelte';
+	import HCpost from '$lib/HCpost.svelte';
 
 	var userId = page.params.id;
 	if (userId == undefined) {
@@ -16,7 +18,8 @@
 	onMount(async () => {
 		try {
 			// @ts-ignore
-			user = await pb.collection('members').getOne(userId);
+			user = await pb.collection('members').getOne(userId, { expand: 'posts.author' });
+			console.log(user);
 			finished = true;
 		} catch (error) {
 			fail = true;
@@ -39,7 +42,7 @@
 
 <div class="flex min-h-screen justify-center bg-base-200 pt-20 pb-20">
 	{#if finished && !fail}
-		<div class="card min-h-75 min-w-[50%] bg-base-100 pb-20 shadow-xl">
+		<div class="card min-h-75 w-[40%] min-w-[30%] bg-base-100 pb-20 shadow-xl">
 			<div class="card-body">
 				<div class="flex">
 					<div class="avatar">
@@ -53,33 +56,61 @@
 					<div class="place-self-center pl-10">
 						<h1 class="font-title text-8xl">{user.name}</h1>
 						<div class="divider"></div>
-						<div class="badge badge-info">
-							<svg class="size-[1em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-								><g fill="currentColor" stroke-linejoin="miter" stroke-linecap="butt"
-									><circle
-										cx="12"
-										cy="12"
-										r="10"
-										fill="none"
-										stroke="currentColor"
-										stroke-linecap="square"
-										stroke-miterlimit="10"
-										stroke-width="2"
-									></circle><path
-										d="m12,17v-5.5c0-.276-.224-.5-.5-.5h-1.5"
-										fill="none"
-										stroke="currentColor"
-										stroke-linecap="square"
-										stroke-miterlimit="10"
-										stroke-width="2"
-									></path><circle cx="12" cy="7.25" r="1.25" fill="currentColor" stroke-width="2"
-									></circle></g
-								></svg
-							>
-							Github
+						<div class="flex gap-2">
+							<div>
+								{#if user.github}
+									<a href={user.github} target="_blank">
+										<div class="badge badge-info">
+											<Github size="16" />
+											Github
+										</div>
+									</a>
+								{/if}
+							</div>
+							<div>
+								{#if user.twitter}
+									<a href={user.twitter} target="_blank">
+										<div class="badge badge-info">
+											<Twitter size="16" />
+											Twitter/X
+										</div>
+									</a>
+								{/if}
+							</div>
+							<div>
+								{#if user.othersite}
+									<a href={user.othersite} target="_blank">
+										<div class="badge badge-info">
+											<Globe size="16" />
+											{user.othersite_name}
+										</div>
+									</a>
+								{/if}
+							</div>
 						</div>
 					</div>
 				</div>
+				<div class="divider">Blog Posts</div>
+				<div class="flex gap-5 overflow-auto">
+					{#each user.expand.posts as post}
+						<div class="card card-side bg-base-300 shadow-sm min-w-[10%] shrink-0">
+							<figure>
+								<img
+									src={pb.files.getURL(post, post.images[0], { thumb: '0x200' })}
+									alt="Movie"
+								/>
+							</figure>
+							<div class="card-body">
+								<h2 class="card-title">{post.title}</h2>
+								{@html post.description}
+								<div class="card-actions justify-end">
+									<a class="btn btn-primary" href={`/blog_post/${post.id}`}>Read</a>
+								</div>
+							</div>
+						</div>
+					{/each}
+				</div>
+				<!-- <div class="divider">Projects</div> -->
 			</div>
 		</div>
 	{:else if finished && fail}
