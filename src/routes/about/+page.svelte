@@ -33,7 +33,7 @@
 				<div class="card-title flex justify-center">
 					<h2>Hackclub @ NFHS Members!</h2>
 				</div>
-				<div>
+				<div class="flex gap-5">
 					{#each userList as user}
 						<a class="hover-3d" href={`/member/${user.id}`}>
 							<div class="card max-w-45 bg-base-300 shadow-lg">
