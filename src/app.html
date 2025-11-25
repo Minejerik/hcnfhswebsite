@@ -1,11 +1,19 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		%sveltekit.head%
-	</head>
-	<body data-sveltekit-preload-data="hover" style="overflow-x: hidden;">
-		<div style="display: contents">%sveltekit.body%</div>
-	</body>
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://nfhshack.club" />
+	<meta property="og:title" content="Hackclub @ NFHS" />
+	<meta property="og:description" content="Hack Club at North Farmington High School" />
+	%sveltekit.head%
+</head>
+
+<body data-sveltekit-preload-data="hover" style="overflow-x: hidden;">
+	<div style="display: contents">%sveltekit.body%</div>
+</body>
+
 </html>

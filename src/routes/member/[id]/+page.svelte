@@ -31,6 +31,7 @@
 <HCnav></HCnav>
 
 <svelte:head>
+
 	{#if finished && !fail}
 		<title>HC@NFHS | {user.name}</title>
 	{:else if finished && fail}
