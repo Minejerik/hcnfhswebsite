@@ -54,7 +54,7 @@
 						</div>
 					</div>
 					<div class="place-self-center pl-10">
-						<h1 class="font-title text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl">{user.name}</h1>
+						<h1 class="font-title text-5xl xl:text-6xl 2xl:text-7xl 3xl:text-8xl">{user.name}</h1>
 						<div class="divider"></div>
 						<div class="flex gap-2">
 							<div>
