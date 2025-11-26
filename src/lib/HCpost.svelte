@@ -4,13 +4,13 @@
 </script>
 
 <div
-	class="card h-50 w-96 min-w-50 flex-none bg-base-100 transition duration-300 ease-in-out outline-solid hover:scale-101"
+	class="card h-50 w-96 min-w-50 flex-none bg-base-100 transition duration-300 ease-in-out outline-solid hover:scale-101 shadow-xl"
 >
-	<a href={`blog_post/${post.id}`} class="h-50 rounded-xl bg-base-100">
+	<a href={`blog_post/${post.id}`} class="h-50 rounded-lg bg-base-100">
 		<figure>
 			<img src={pb.files.getURL(post, post.images[0], { thumb: '400x0' })} alt="For post" />
 		</figure>
-		<div class="card-body rounded-b-xl bg-base-300">
+		<div class="card-body rounded-b-lg bg-base-300">
 			<h2 class="card-title">{post.title}</h2>
 			<p class="prose">{@html post.description}</p>
 			<div class="divider mt-0 mb-1"></div>

@@ -31,7 +31,6 @@
 <HCnav></HCnav>
 
 <svelte:head>
-
 	{#if finished && !fail}
 		<title>HC@NFHS | {user.name}</title>
 	{:else if finished && fail}
@@ -55,7 +54,7 @@
 						</div>
 					</div>
 					<div class="place-self-center pl-10">
-						<h1 class="font-title text-8xl">{user.name}</h1>
+						<h1 class="font-title text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl">{user.name}</h1>
 						<div class="divider"></div>
 						<div class="flex gap-2">
 							<div>
@@ -92,24 +91,31 @@
 					</div>
 				</div>
 				<div class="divider">Blog Posts</div>
-				<div class="flex gap-5 overflow-auto">
-					{#each user.expand.posts as post}
-						<div class="card card-side bg-base-300 shadow-sm min-w-[10%] shrink-0">
-							<figure>
-								<img
-									src={pb.files.getURL(post, post.images[0], { thumb: '0x200' })}
-									alt="Movie"
-								/>
-							</figure>
-							<div class="card-body">
-								<h2 class="card-title">{post.title}</h2>
-								{@html post.description}
-								<div class="card-actions justify-end">
-									<a class="btn btn-primary" href={`/blog_post/${post.id}`}>Read</a>
+				<div class="flex gap-5 overflow-auto min-w-full">
+					{#if user.expand.posts}
+						{#each user.expand.posts as post}
+							<div class="card card-side min-w-[10%] shrink-0 bg-base-300 shadow-sm">
+								<figure>
+									<img
+										src={pb.files.getURL(post, post.images[0], { thumb: '0x200' })}
+										alt="Movie"
+									/>
+								</figure>
+								<div class="card-body">
+									<h2 class="card-title">{post.title}</h2>
+									{@html post.description}
+									<div class="card-actions justify-end">
+										<a class="btn btn-primary" href={`/blog_post/${post.id}`}>Read</a>
+									</div>
 								</div>
 							</div>
+						{/each}
+					{:else}
+						<div class="grid grid-cols-3 min-w-full">
+							<div></div>
+							<h1 class="text-xl place-self-center text-error">{`${user.name} has no blog posts.`}</h1>
 						</div>
-					{/each}
+					{/if}
 				</div>
 				<!-- <div class="divider">Projects</div> -->
 			</div>
